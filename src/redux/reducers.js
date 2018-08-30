@@ -1,27 +1,33 @@
 const initialState = {
-  articles: [
+  todos: [
     { title: 'coucou', done: false, id: 0 },
   ],
 };
 
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'ADD_ARTICLE':
-      return { ...state, articles: [...state.articles, action.payload] };
-    case 'DELETE_ARTICLE': {
-      const newList = state.articles.filter(obj => (obj.id !== action.payload.id));
-      return { ...state, articles: newList };
+const rootReducer = (
+  state = initialState,
+  actions,
+) => {
+  const { todos } = state;
+  const { payload, type } = actions;
+  switch (type) {
+    case 'ADD_TODO':
+      return { ...state, todos: [...todos, payload] };
+    case 'DELETE_TODO': {
+      const newTodos = todos.filter(obj => obj.id !== payload.id);
+      return { ...state, todos: newTodos };
     }
-    case 'UPDATE_ARTICLE': {
-      const newList = state.articles.map(obj => (
-        obj.id === action.payload.id
-          ? action.payload
-          : obj
+    case 'UPDATE_TODO': {
+      const newTodos = todos.map(todo => (
+        todo.id === payload.id
+          ? payload
+          : todo
       ));
-      return { ...state, articles: newList };
+      return { ...state, todos: newTodos };
     }
     default:
       return state;
   }
 };
+
 export default rootReducer;

@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addArticle } from '../../redux/actions';
+import PropTypes from 'prop-types';
+import { addTodo } from '../../redux/actions';
 import { Lists } from '../todoRedux';
 
 class TodoInput extends Component {
@@ -10,10 +10,10 @@ class TodoInput extends Component {
   };
 
   addTodo = () => {
-    const { todo } = this.state;
-    const { articles } = this.props;
-    const id = articles.length;
-    this.props.addArticle({ title: todo, done: false, id });
+    const { todo: title } = this.state;
+    const { todo } = this.props;
+    const id = todo.length;
+    this.props.addTodo({ title, done: false, id });
   };
 
   render() {
@@ -36,15 +36,15 @@ class TodoInput extends Component {
     );
   }
 }
+
 TodoInput.propTypes = {
-  articles: PropTypes.arrayOf(PropTypes.object).isRequired,
-  addArticle: PropTypes.func.isRequired,
+  todo: PropTypes.arrayOf(PropTypes.object).isRequired,
+  addTodo: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({ articles: state.articles });
-const mapDispatchToProps = dispatch => ({
-  addArticle: article => dispatch(addArticle(article)),
-});
-
+const mapStateToProps = state => ({ todo: state.todos });
+const mapDispatchToProps = {
+  addTodo,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoInput);
