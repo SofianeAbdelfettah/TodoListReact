@@ -20,7 +20,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Welcome to {name}</h1>
-        <Row gutter={8} justify="space-between">
+        <Row gutter={8} align="middle">
           <Col span={6}>
             <SideMenu />
           </Col>
