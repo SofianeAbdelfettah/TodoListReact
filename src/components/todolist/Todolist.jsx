@@ -68,7 +68,7 @@ export default class Todolist extends Component {
           <Input
             style={{ marginTop: 8 }}
             placeholder="Enter your new Todo"
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            prefix={<Icon type="check-square-o" style={{ color: 'rgba(0,0,0,.25)' }} />}
             suffix={suffix}
             value={name}
             onChange={(e) => {

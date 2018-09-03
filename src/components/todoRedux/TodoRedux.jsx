@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Button, List, Col, Row } from 'antd';
 import { updateTodo, deleteTodo } from '../../redux/actions';
 
 const mapStateToProps = state => ({ todos: state.todos });
@@ -9,23 +10,38 @@ const mapDispatchToProps = {
 };
 
 const ConnectedList = ({ todos, updateTodoState, deleteTodoState }) => (
-  <ul className="list-group list-group-flush">
-    {todos.map(todo => (
-      <li className="list-group-item" key={todo.id}>
-        {todo.title}, { todo.done.toString() }
-        <button onClick={() =>
-          updateTodoState({ ...todo, done: !todo.done })}
-        >
-          done
-        </button>
-        <button onClick={() =>
-          deleteTodoState({ ...todo })}
-        >
-         delete
-        </button>
-      </li>
-    ))}
-  </ul>
+  <List
+    size="large"
+    itemLayout="horizontal"
+    dataSource={todos}
+    renderItem={todo => (
+      <List.Item>
+        <Row gutter={48}>
+          <Col span={10} style={{ paddingTop: 8 }}>
+            {todo.title}, { todo.done.toString() }
+          </Col>
+          <Col span={7}>
+            <Button
+              icon="check"
+              onClick={() => updateTodoState({ ...todo, done: !todo.done })}
+            >
+              done
+            </Button>
+          </Col>
+          <Col span={5}>
+            <Button
+              icon="delete"
+              type="danger"
+              onClick={() => deleteTodoState({ ...todo })}
+            >
+            delete
+            </Button>
+          </Col>
+        </Row>
+      </List.Item>
+    )}
+    bordered
+  />
 );
 
 ConnectedList.propTypes = {

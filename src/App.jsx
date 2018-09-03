@@ -1,9 +1,11 @@
 import { Component } from 'react';
-import { Row, Col } from 'antd';
-import './App.css';
+import { Row, Col, Layout } from 'antd';
+import 'antd/dist/antd.css';
 import Todolist from './components/todolist';
 import { TodoInput } from './components/todoRedux';
-import SideMenu from './components/SubMenu/SubMenu';
+import Header from './components/Header/Header';
+
+const { Content } = Layout;
 
 export default class App extends Component {
   state = {
@@ -19,18 +21,32 @@ export default class App extends Component {
     const { name, list } = this.state;
     return (
       <div className="App">
-        <h1>Welcome to {name}</h1>
-        <Row gutter={8} align="middle">
-          <Col span={6}>
-            <SideMenu />
-          </Col>
-          <Col span={9}>
-            <Todolist list={list} updateParent={this.updateState} />
-          </Col>
-          <Col span={9}>
-            <TodoInput />
-          </Col>
-        </Row>
+        <Header />
+        <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
+          <Content style={{ padding: '0 50px', marginTop: 64 }}>
+            <h1>Welcome to {name}</h1>
+            <Row type="flex" justify="space-around" align="middle">
+              <Col
+                md={{ span: 24 }}
+                lg={{ span: 15 }}
+                xl={{ span: 10 }}
+                xxl={{ span: 15 }}
+                style={{ marginTop: 9 }}
+              >
+                <Todolist list={list} updateParent={this.updateState} />
+              </Col>
+              <Col
+                md={{ span: 24 }}
+                lg={{ span: 15 }}
+                xl={{ span: 10 }}
+                xxl={{ span: 15 }}
+                style={{ marginTop: 9 }}
+              >
+                <TodoInput />
+              </Col>
+            </Row>
+          </Content>
+        </div>
       </div>
     );
   }
