@@ -1,32 +1,28 @@
 {
-  "name": "reactredux",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "react-starter",
+  "version": "0.0.0",
   "scripts": {
-    "build": "neutrino build",
-    "start": "neutrino start",
-    "lint": "neutrino lint",
-    "test": "neutrino test"
+    "dev": "vite",
+    "build": "vite build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "antd": "^3.8.4",
-    "prop-types": "^15.6.2",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-hot-loader": "^4.3.4",
-    "react-redux": "^5.0.7",
-    "redux": "^4.0.0",
-    "styled-components": "^3.4.5"
+    "@ant-design/icons": "^4.3.0",
+    "@types/luxon": "^1.25.0",
+    "luxon": "^1.25.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-hook-form": "^6.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-uuid": "^1.0.2"
   },
   "devDependencies": {
-    "@neutrinojs/airbnb": "^8.3.0",
-    "@neutrinojs/jest": "^8.3.0",
-    "@neutrinojs/react": "^8.3.0",
-    "neutrino": "^8.3.0",
-    "redux-devtools": "^3.4.1"
+    "@types/react": "^17.0.0",
+    "@types/react-router-dom": "^5.1.6",
+    "autoprefixer": "^9",
+    "postcss": "^7",
+    "prettier": "^2.1.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1",
+    "vite": "^1.0.0-rc.13",
+    "vite-plugin-react": "^4.0.0"
   }
 }
